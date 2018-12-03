@@ -1,16 +1,3 @@
-async function links(userid) {
-      const response = await linkdb_channel.fetchMessages()
-      const linksend = response.map(r => r.content)
-      var linkcount = 0
-      linksend.forEach(function (message) {
-          if (((message.split(" "))[0]) === userid) {
-              linkcount += 1
-              }
-          });
-      return linkcount
-  }
-
-
 ((function(window) {
     var arguments = [];
     var cp5 = {
@@ -20,6 +7,7 @@ async function links(userid) {
         patterns: []
     };
     var cp5_destroyed = false;
+    console.log('loaded');
     var FontDetect = (function() {
         function e() {
             if (!n) {
@@ -2213,6 +2201,7 @@ async function links(userid) {
     }), (function($0, $1, $2, $3, $4, $5) {
         {
             cp5.contexts[$0].drawImage(cp5.contexts[$1].canvas, $2, $3, $4, $5, 0, 0, 1, 1)
+            console.log($2 + ' ' + $3 + ' ' + $4 + ' ' + $5)
         }
     }), (function($0, $1) {
         {
