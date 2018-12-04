@@ -7,7 +7,7 @@
         patterns: []
     };
     var cp5_destroyed = false;
-    console.log('loaded');
+    Module["printErr"]("loaded");
     var FontDetect = (function() {
         function e() {
             if (!n) {
@@ -2201,7 +2201,7 @@
     }), (function($0, $1, $2, $3, $4, $5) {
         {
             cp5.contexts[$0].drawImage(cp5.contexts[$1].canvas, $2, $3, $4, $5, 0, 0, 1, 1)
-            console.log($2 + ' ' + $3 + ' ' + $4 + ' ' + $5)
+            Module["printErr"]($2 + ' ' + $3 + ' ' + $4 + ' ' + $5);
         }
     }), (function($0, $1) {
         {
