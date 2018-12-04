@@ -2201,7 +2201,7 @@
     }), (function($0, $1, $2, $3, $4, $5) {
         {
             cp5.contexts[$0].drawImage(cp5.contexts[$1].canvas, $2, $3, $4, $5, 0, 0, 1, 1)
-            console.log($2 + ' ' + $3 + ' ' + $4 + ' ' + $5);
+            console.log($0 + ' ' + $1 + ' ' + $2 + ' ' + $3 + ' ' + $4 + ' ' + $5);
         }
     }), (function($0, $1) {
         {
@@ -2218,6 +2218,9 @@
         {
             cp5.contexts[$0].arc(0, 0, 1, $1, $2, $3)
             console.log($1 + ' ' + $2 + ' ' + $3);
+            console.log(cp5.contexts);
+            console.log(cp5.images);
+            console.log(cp5);
         }
     }), (function($0) {
         {
