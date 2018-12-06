@@ -371,22 +371,16 @@ injectScript("("+(function() {
 
 		if(event.data.byteLength > 15){
 			
-			/*
-			// Uncomment as needed to dump packets for inspection.
 			console.log("Recv Length: " + event.data.byteLength);
-			//console.log("Received data:");
+			console.log("Received data:");
 			var dv = new DataView(event.data);
 			console.log(dv.getUint8(0) + " " + dv.getUint8(1));
 			console.log(dv.getUint16(2));
-			//console.log(String.fromCharCode.apply(null, new Uint8Array(event.data)));
-			*/
-			/*
+			console.log(String.fromCharCode.apply(null, new Uint8Array(event.data)));
 			var dv = new DataView(event.data);
 			console.log("Server sent client ArrayBuffer of size: " + event.data.byteLength);
 			console.log(dv.getUint8(0) + " " + dv.getUint8(1));
-			*/
-
-			//console.log("Packet type: " + dv.getUint8(0));
+			console.log("Packet type: " + dv.getUint8(0));
 			var str = "";
 			/*
 			VM4587:170 Packet type: 0
