@@ -1,3 +1,13 @@
+// ==UserScript==
+// @name         New Userscript
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  try to take over the world!
+// @author       You
+// @match        http://*/*
+// @grant        none
+// ==/UserScript==
+
 function injectScript(source){
 	// Create a new script element.
     var elem = document.createElement("script");
@@ -18,7 +28,7 @@ injectScript("("+(function() {
 	    if(this === window.WebSocket.prototype.send) return _toString.call(proxiedSend);
 	    return _toString.call(this);
 	};
-	
+
 	var old = alert;
 	alert = function() {
 		console.log("Traced an alert:")
@@ -92,18 +102,18 @@ injectScript("("+(function() {
 		74:"Mega Smasher",
 		76:"Landmine"
 	};
-	
+
 	// Entities
 	var entities = {
 		// Basic Polygons
 		triangle:[84, 114, 105, 97, 110, 103, 108, 101],
 		square:[83, 113, 117, 97, 114, 101],
 		pentagon:[80, 101, 110, 116, 97, 103, 111, 110],
-		
+
 		// Advanced Polygons
 		crasher:[67, 114, 97, 115, 104, 101, 114],
 		alpha_pentagon:[65, 108, 112, 104, 97, 32, 80, 101, 110, 116, 97, 103, 111, 110],
-		
+
 		// Boss Enemies
 		guardian:[71, 117, 97, 114, 100, 105, 97, 110],
 		summoner:[83, 117, 109, 109, 111, 110, 101, 114],
@@ -120,7 +130,7 @@ injectScript("("+(function() {
 
 	// Cursor Y coordinate
 	var yc = 0;
-	
+
 	var f = -1;
 
 	function decodeUTF8(bytes) {
@@ -153,6 +163,7 @@ injectScript("("+(function() {
 		return s;
 	}
 	function handleSendData(data) {
+        console.log(data);
 		// This function is called whenever a packet is sent from the client
 		// to the server.
 		// Note that all packets appear to be arrays of 8-bit signed integers (Int8Array in JS)
@@ -294,8 +305,8 @@ injectScript("("+(function() {
 			inst.events.push([1, event.data, event.data.length]);
 		}
 		*/
-		
-		
+
+
 		// Detects kills
 		var ar = new Uint8Array(event.data);
 		var ka = scan(ar, entities.triangle);
@@ -370,9 +381,14 @@ injectScript("("+(function() {
 		}
 
 		if(event.data.byteLength > 15){
-			
+
 			console.log("Recv Length: " + event.data.byteLength);
 			console.log("Received data:");
+            var codes = event.data.slice(1, event.data.length - 1);
+            console.log(decodeUTF8(codes));
+            console.log(event.data);
+            var string = new TextDecoder().decode(event.data);
+            console.log(event.data ,string );
 			var dv = new DataView(event.data);
 			console.log(dv.getUint8(0) + " " + dv.getUint8(1));
 			console.log(dv.getUint16(2));
@@ -516,7 +532,7 @@ injectScript("("+(function() {
 		}
 		return event;
 	}
-	
+
 	// Checks if an array is present inside a larger array
 	function scan(array, query) {
 		var z = array.indexOf(query[0]);
@@ -528,7 +544,7 @@ injectScript("("+(function() {
 		}
 		return z
 	}
-	
+
 	// Gets subarray at index but stops when it reaches null
 	function parse(array, index) {
 		var z = [];
@@ -539,7 +555,7 @@ injectScript("("+(function() {
 		}
 		return z;
 	}
-	
+
 
 	// Snoop on outgoing websocket traffic.
 
