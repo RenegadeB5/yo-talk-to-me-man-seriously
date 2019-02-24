@@ -91,3 +91,5 @@
 [00:38:29] [Client thread/INFO]: [CHAT] §e78. §aCaneGain §7» §b$43.68
 [00:38:29] [Client thread/INFO]: [CHAT] §e79. §aViews §7» §b$43.26
 [00:38:29] [Client thread/INFO]: [CHAT] §e80. §aBlack §7» §b$37.38
+
+//only do .js vs .md because it automatically creates new line
